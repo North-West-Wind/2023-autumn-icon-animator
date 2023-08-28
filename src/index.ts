@@ -66,7 +66,7 @@ const BLINK_FRAME = 6;
 
 	const leaves: { leaf: Leaf, startFrame: number }[] = [];
 	for (let ii = 0; ii < LEAF_COUNT; ii++) {
-		const leaf = new Leaf(FPS, LEAF_FRAME, Math.random() * 960);
+		const leaf = new Leaf(FPS, LEAF_FRAME, Math.random() * (1920 - 540));
 		leaves.push({ leaf, startFrame: Math.floor(Math.random() * (frames - LEAF_FRAME)) });
 	}
 	console.log("Leaves will come in at frames:", leaves.map(l => l.startFrame));

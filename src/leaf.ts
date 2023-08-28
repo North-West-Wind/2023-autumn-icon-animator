@@ -1,6 +1,7 @@
 import { CanvasRenderingContext2D } from "canvas";
 
 const COLORS = ["#dd6d29", "#f09231", "#db6354"];
+const coeff = 540 / (1920 * 1920);
 
 export class Leaf {
 	fps: number;
@@ -16,13 +17,13 @@ export class Leaf {
 		this.fps = fps;
 		this.duration = duration;
 		this.y = y;
-		this.xOffset = Math.round(Math.random() * 480) - 240;
+		this.xOffset = -Math.round(Math.random() * 480);
 		this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
 		this.frames = -this.duration * 0.01;
 	}
 
 	func(x: number) {
-		return -((x + 960) * (x - 3840) / 3840 + 960);
+		return -(coeff * Math.pow(x - 1920, 2) - 540);
 	}
 
 	render(ctx: CanvasRenderingContext2D) {
